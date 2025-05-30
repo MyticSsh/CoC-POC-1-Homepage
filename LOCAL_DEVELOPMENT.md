@@ -14,6 +14,519 @@
 
 ## 🛠 개발 환경 설정
 
+## 🍎 macOS 개발 환경 설정
+
+### 1. Homebrew 설치 (패키지 매니저)
+\`\`\`bash
+# Homebrew 설치
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 설치 확인
+brew --version
+\`\`\`
+
+### 2. Node.js 설치 (macOS)
+\`\`\`bash
+# nvm 설치 (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# 터미널 재시작 또는 소스 리로드
+source ~/.zshrc  # zsh 사용시
+# 또는
+source ~/.bash_profile  # bash 사용시
+
+# Node.js 18 설치
+nvm install 18
+nvm use 18
+nvm alias default 18
+
+# 또는 Homebrew로 설치
+brew install node@18
+brew link node@18
+
+# 버전 확인
+node --version
+npm --version
+\`\`\`
+
+### 3. Git 설치 (macOS)
+\`\`\`bash
+# Homebrew로 Git 설치
+brew install git
+
+# 또는 Xcode Command Line Tools 설치
+xcode-select --install
+
+# Git 설정
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# 버전 확인
+git --version
+\`\`\`
+
+### 4. VS Code 설치 (macOS)
+\`\`\`bash
+# Homebrew Cask로 설치
+brew install --cask visual-studio-code
+
+# 또는 공식 웹사이트에서 다운로드
+# https://code.visualstudio.com/
+\`\`\`
+
+### 5. 추가 도구 설치 (macOS)
+\`\`\`bash
+# 유용한 개발 도구들
+brew install wget curl tree
+
+# 터미널 개선 (선택사항)
+brew install zsh-autosuggestions zsh-syntax-highlighting
+\`\`\`
+
+## 🪟 Windows 개발 환경 설정
+
+### 1. WSL 2 설치 (Windows Subsystem for Linux)
+\`\`\`powershell
+# PowerShell을 관리자 권한으로 실행
+
+# WSL 기능 활성화
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+# Virtual Machine Platform 활성화
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+# 재부팅 후 WSL 2를 기본값으로 설정
+wsl --set-default-version 2
+
+# Ubuntu 설치
+wsl --install -d Ubuntu
+
+# 또는 Microsoft Store에서 Ubuntu 설치
+\`\`\`
+
+### 2. Windows Terminal 설치
+\`\`\`powershell
+# Microsoft Store에서 "Windows Terminal" 설치
+# 또는 GitHub에서 다운로드
+# https://github.com/microsoft/terminal
+\`\`\`
+
+### 3. Node.js 설치 (Windows)
+
+**방법 1: WSL 내에서 설치 (권장)**
+\`\`\`bash
+# WSL Ubuntu 터미널에서
+# nvm 설치
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# 터미널 재시작 또는 소스 리로드
+source ~/.bashrc
+
+# Node.js 18 설치
+nvm install 18
+nvm use 18
+nvm alias default 18
+
+# 버전 확인
+node --version
+npm --version
+\`\`\`
+
+**방법 2: Windows에 직접 설치**
+\`\`\`powershell
+# Chocolatey 설치 (패키지 매니저)
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# Node.js 설치
+choco install nodejs --version=18.17.0
+
+# 또는 공식 웹사이트에서 다운로드
+# https://nodejs.org/
+\`\`\`
+
+### 4. Git 설치 (Windows)
+\`\`\`powershell
+# Chocolatey로 설치
+choco install git
+
+# 또는 공식 웹사이트에서 다운로드
+# https://git-scm.com/download/win
+
+# Git 설정
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Windows에서 라인 엔딩 설정
+git config --global core.autocrlf true
+\`\`\`
+
+### 5. VS Code 설치 (Windows)
+\`\`\`powershell
+# Chocolatey로 설치
+choco install vscode
+
+# 또는 공식 웹사이트에서 다운로드
+# https://code.visualstudio.com/
+
+# WSL 확장 프로그램 설치 (필수)
+# VS Code에서 "Remote - WSL" 확장 프로그램 설치
+\`\`\`
+
+### 6. PowerShell 7 설치 (선택사항)
+\`\`\`powershell
+# Microsoft Store에서 "PowerShell" 설치
+# 또는 GitHub에서 다운로드
+# https://github.com/PowerShell/PowerShell
+\`\`\`
+
+## 🚀 프로젝트 설정 (공통)
+
+### 1. 저장소 클론
+
+**macOS**
+\`\`\`bash
+# 터미널에서
+git clone https://github.com/your-username/coc-website.git
+cd coc-website
+\`\`\`
+
+**Windows (WSL 사용 권장)**
+\`\`\`bash
+# WSL 터미널에서
+git clone https://github.com/your-username/coc-website.git
+cd coc-website
+\`\`\`
+
+**Windows (PowerShell)**
+\`\`\`powershell
+# PowerShell에서
+git clone https://github.com/your-username/coc-website.git
+cd coc-website
+\`\`\`
+
+### 2. 의존성 설치
+
+**macOS / WSL**
+\`\`\`bash
+# npm 사용
+npm install
+
+# yarn 사용 (선택사항)
+npm install -g yarn
+yarn install
+\`\`\`
+
+**Windows (PowerShell)**
+\`\`\`powershell
+# npm 사용
+npm install
+
+# yarn 사용 (선택사항)
+npm install -g yarn
+yarn install
+\`\`\`
+
+### 3. 환경 변수 설정
+
+**macOS / WSL**
+\`\`\`bash
+# 환경 변수 파일 생성
+cp .env.example .env.local
+
+# nano 에디터로 편집
+nano .env.local
+
+# 또는 VS Code로 편집
+code .env.local
+\`\`\`
+
+**Windows (PowerShell)**
+\`\`\`powershell
+# 환경 변수 파일 생성
+Copy-Item .env.example .env.local
+
+# 메모장으로 편집
+notepad .env.local
+
+# 또는 VS Code로 편집
+code .env.local
+\`\`\`
+
+### 4. 개발 서버 실행
+
+**macOS / WSL**
+\`\`\`bash
+# 개발 서버 시작
+npm run dev
+
+# 특정 포트로 실행
+npm run dev -- -p 3001
+
+# 백그라운드 실행
+nohup npm run dev &
+\`\`\`
+
+**Windows (PowerShell)**
+\`\`\`powershell
+# 개발 서버 시작
+npm run dev
+
+# 특정 포트로 실행
+npm run dev -- -p 3001
+\`\`\`
+
+## 🛠 개발 도구 설정
+
+### VS Code 설정 (공통)
+
+#### 필수 확장 프로그램
+\`\`\`json
+// .vscode/extensions.json
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-json",
+    "ms-vscode-remote.remote-wsl"  // Windows만
+  ]
+}
+\`\`\`
+
+#### VS Code 설정
+\`\`\`json
+// .vscode/settings.json
+{
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+  "files.eol": "\n",  // 라인 엔딩 통일
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)"  // Windows만
+}
+\`\`\`
+
+### 터미널 설정
+
+**macOS (Zsh)**
+\`\`\`bash
+# .zshrc 파일 편집
+nano ~/.zshrc
+
+# 유용한 alias 추가
+echo 'alias ll="ls -la"' >> ~/.zshrc
+echo 'alias dev="npm run dev"' >> ~/.zshrc
+echo 'alias build="npm run build"' >> ~/.zshrc
+
+# 소스 리로드
+source ~/.zshrc
+\`\`\`
+
+**Windows (WSL)**
+\`\`\`bash
+# .bashrc 파일 편집
+nano ~/.bashrc
+
+# 유용한 alias 추가
+echo 'alias ll="ls -la"' >> ~/.bashrc
+echo 'alias dev="npm run dev"' >> ~/.bashrc
+echo 'alias build="npm run build"' >> ~/.bashrc
+
+# 소스 리로드
+source ~/.bashrc
+\`\`\`
+
+## 🔧 운영체제별 문제 해결
+
+### macOS 특화 문제
+
+#### 1. Xcode Command Line Tools 문제
+\`\`\`bash
+# Xcode Command Line Tools 재설치
+sudo xcode-select --reset
+xcode-select --install
+\`\`\`
+
+#### 2. 권한 문제
+\`\`\`bash
+# npm 전역 패키지 권한 문제 해결
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+# 또는 nvm 사용 권장
+\`\`\`
+
+#### 3. M1/M2 Mac 호환성 문제
+\`\`\`bash
+# Rosetta 2 설치 (Intel 앱 호환성)
+softwareupdate --install-rosetta
+
+# Homebrew ARM64 버전 확인
+arch -arm64 brew install node
+\`\`\`
+
+### Windows 특화 문제
+
+#### 1. WSL 관련 문제
+\`\`\`powershell
+# WSL 상태 확인
+wsl --status
+
+# WSL 업데이트
+wsl --update
+
+# WSL 재시작
+wsl --shutdown
+wsl
+\`\`\`
+
+#### 2. 경로 문제
+\`\`\`bash
+# Windows 드라이브 접근 (WSL에서)
+cd /mnt/c/Users/YourUsername/Projects
+
+# WSL 홈 디렉토리에서 작업 권장
+cd ~
+mkdir projects
+cd projects
+\`\`\`
+
+#### 3. 성능 문제
+\`\`\`bash
+# WSL 메모리 제한 설정
+# %UserProfile%\.wslconfig 파일 생성
+[wsl2]
+memory=8GB
+processors=4
+swap=2GB
+\`\`\`
+
+#### 4. 파일 권한 문제
+\`\`\`bash
+# WSL에서 Windows 파일 권한 문제 해결
+sudo umount /mnt/c
+sudo mount -t drvfs C: /mnt/c -o metadata,uid=1000,gid=1000,umask=022
+\`\`\`
+
+## 📱 모바일 테스트 설정
+
+### 네트워크 설정 (공통)
+
+#### 로컬 IP 확인
+**macOS**
+\`\`\`bash
+# 로컬 IP 주소 확인
+ifconfig | grep "inet " | grep -v 127.0.0.1
+
+# 또는
+ipconfig getifaddr en0
+\`\`\`
+
+**Windows**
+\`\`\`powershell
+# PowerShell에서
+ipconfig | findstr "IPv4"
+
+# WSL에서
+ip addr show | grep "inet " | grep -v 127.0.0.1
+\`\`\`
+
+#### 개발 서버 외부 접속 허용
+\`\`\`bash
+# 모든 인터페이스에서 접속 허용
+npm run dev -- -H 0.0.0.0
+
+# 특정 포트로 실행
+npm run dev -- -H 0.0.0.0 -p 3000
+\`\`\`
+
+#### 방화벽 설정
+**macOS**
+\`\`\`bash
+# 방화벽 상태 확인
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
+
+# 포트 허용 (필요시)
+# 시스템 환경설정 > 보안 및 개인정보보호 > 방화벽에서 설정
+\`\`\`
+
+**Windows**
+\`\`\`powershell
+# Windows Defender 방화벽에서 포트 허용
+New-NetFirewallRule -DisplayName "Node.js Dev Server" -Direction Inbound -Protocol TCP -LocalPort 3000 -Action Allow
+\`\`\`
+
+## 🎯 개발 팁
+
+### 생산성 향상 도구
+
+#### macOS
+\`\`\`bash
+# 유용한 도구들
+brew install --cask rectangle  # 윈도우 관리
+brew install --cask alfred     # 런처
+brew install tree              # 디렉토리 구조 표시
+brew install bat               # cat 개선 버전
+\`\`\`
+
+#### Windows
+\`\`\`powershell
+# 유용한 도구들
+choco install powertoys        # Windows 유틸리티
+choco install everything       # 파일 검색
+choco install fzf              # 퍼지 파인더
+\`\`\`
+
+### 개발 워크플로우 최적화
+
+#### 스크립트 단축키 설정
+\`\`\`json
+// package.json에 추가
+{
+  "scripts": {
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
+    "dev:debug": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf .next node_modules package-lock.json",
+    "reset": "npm run clean && npm install"
+  }
+}
+\`\`\`
+
+#### Git 훅 설정
+\`\`\`bash
+# pre-commit 훅 설정
+npm install --save-dev husky lint-staged
+
+# package.json에 추가
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
+\`\`\`
+
 ### 1. 시스템 요구사항
 
 #### 필수 요구사항

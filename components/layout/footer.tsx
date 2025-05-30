@@ -1,8 +1,25 @@
+// 파일 설명 주석 추가
+
+/**
+ * 푸터 컴포넌트
+ * 사이트 하단에 위치하는 푸터를 렌더링합니다.
+ * 로고, 저작권 정보, 소셜 미디어 링크를 포함합니다.
+ */
+
 import Link from "next/link"
 import { Code } from "lucide-react"
 import { COMPANY_INFO, SOCIAL_LINKS } from "@/constants/company"
 
+/**
+ * 푸터 컴포넌트
+ * @returns {JSX.Element} 푸터 JSX 엘리먼트
+ */
 export function Footer() {
+  /**
+   * 소셜 미디어 아이콘을 반환하는 함수
+   * @param {string} iconName - 아이콘 이름
+   * @returns {JSX.Element | null} 해당하는 SVG 아이콘 또는 null
+   */
   const getSocialIcon = (iconName: string) => {
     switch (iconName) {
       case "facebook":
@@ -66,15 +83,18 @@ export function Footer() {
   return (
     <footer className="w-full border-t bg-background py-6">
       <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
+        {/* 로고 섹션 */}
         <div className="flex items-center gap-2">
           <Code className="h-6 w-6" />
           <span className="text-lg font-bold">{COMPANY_INFO.name}</span>
         </div>
 
+        {/* 저작권 정보 */}
         <p className="text-center text-sm text-muted-foreground md:text-left">
           &copy; {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
         </p>
 
+        {/* 소셜 미디어 링크들 */}
         <div className="flex gap-4">
           {SOCIAL_LINKS.map((link) => (
             <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-foreground">

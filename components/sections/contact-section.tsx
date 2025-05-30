@@ -1,3 +1,10 @@
+// 파일 설명 주석 추가
+
+/**
+ * 연락처 섹션 컴포넌트
+ * 연락처 정보와 문의 양식을 표시합니다.
+ */
+
 "use client"
 
 import type React from "react"
@@ -7,7 +14,12 @@ import { Mail, Phone, MapPin } from "lucide-react"
 import { CONTACT_INFO } from "@/constants/company"
 import { useState } from "react"
 
+/**
+ * 연락처 섹션 컴포넌트
+ * @returns {JSX.Element} 연락처 섹션 JSX 엘리먼트
+ */
 export function ContactSection() {
+  /** 문의 양식 데이터 상태 관리 */
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,12 +27,20 @@ export function ContactSection() {
     message: "",
   })
 
+  /**
+   * 양식 제출 핸들러
+   * @param {React.FormEvent} e - 폼 이벤트
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
+    // TODO: 실제 양식 제출 로직 구현
     console.log("Form submitted:", formData)
   }
 
+  /**
+   * 입력 필드 변경 핸들러
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - 입력 이벤트
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
       ...prev,
@@ -31,6 +51,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
       <div className="container px-4 md:px-6">
+        {/* 섹션 헤더 */}
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-background px-3 py-1 text-sm">Contact</div>
@@ -41,8 +62,11 @@ export function ContactSection() {
             </p>
           </div>
         </div>
+
         <div className="mx-auto grid max-w-5xl gap-6 py-12 lg:grid-cols-2">
+          {/* 연락처 정보 */}
           <div className="flex flex-col gap-4">
+            {/* 이메일 */}
             <div className="flex items-start gap-4">
               <Mail className="h-6 w-6 text-primary mt-1" />
               <div>
@@ -50,6 +74,7 @@ export function ContactSection() {
                 <p className="text-muted-foreground">{CONTACT_INFO.email}</p>
               </div>
             </div>
+            {/* 전화번호 */}
             <div className="flex items-start gap-4">
               <Phone className="h-6 w-6 text-primary mt-1" />
               <div>
@@ -57,6 +82,7 @@ export function ContactSection() {
                 <p className="text-muted-foreground">{CONTACT_INFO.phone}</p>
               </div>
             </div>
+            {/* 주소 */}
             <div className="flex items-start gap-4">
               <MapPin className="h-6 w-6 text-primary mt-1" />
               <div>
@@ -65,7 +91,10 @@ export function ContactSection() {
               </div>
             </div>
           </div>
+
+          {/* 문의 양식 */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* 이름과 이메일 입력 */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label
@@ -101,6 +130,8 @@ export function ContactSection() {
                 />
               </div>
             </div>
+
+            {/* 제목 입력 */}
             <div className="space-y-2">
               <label
                 htmlFor="subject"
@@ -117,6 +148,8 @@ export function ContactSection() {
                 required
               />
             </div>
+
+            {/* 메시지 입력 */}
             <div className="space-y-2">
               <label
                 htmlFor="message"
@@ -133,6 +166,8 @@ export function ContactSection() {
                 required
               />
             </div>
+
+            {/* 제출 버튼 */}
             <Button type="submit" className="w-full">
               Send Message
             </Button>

@@ -1,5 +1,3 @@
-// 파일 설명 주석 추가
-
 /**
  * 히어로 섹션 컴포넌트
  * 메인 페이지 상단의 히어로 섹션을 렌더링합니다.
@@ -44,13 +42,18 @@ export function HeroSection() {
             </div>
           </div>
           {/* 히어로 이미지 */}
-          <Image
-            src="/placeholder.svg?height=550&width=550"
-            width={550}
-            height={550}
-            alt="Software Development"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-          />
+          <div className="flex items-center justify-center">
+            <Image
+              src="/images/hero.png"
+              width={550}
+              height={550}
+              alt="Software Development"
+              className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            />
+          </div>
         </div>
       </div>
     </section>

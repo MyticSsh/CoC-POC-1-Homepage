@@ -15,11 +15,22 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // 이미지 최적화
+  // 이미지 최적화 설정
   images: {
-    domains: ['placeholder.svg'],
+    // 외부 도메인 허용 (필요시)
+    domains: ['blob.v0.dev'],
+    // 이미지 포맷 설정
     formats: ['image/webp', 'image/avif'],
+    // 로컬 이미지 최적화 활성화
     unoptimized: false,
+    // 디바이스 크기 설정
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    // 이미지 크기 설정
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // 이미지 로더 설정
+    loader: 'default',
+    // 이미지 품질 설정
+    quality: 75,
   },
   
   // 압축
@@ -60,16 +71,6 @@ const nextConfig = {
         source: '/home',
         destination: '/',
         permanent: true,
-      },
-    ]
-  },
-  
-  // API 라우트 재작성
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: '/api/:path*',
       },
     ]
   },

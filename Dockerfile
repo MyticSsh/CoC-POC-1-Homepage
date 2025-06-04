@@ -17,7 +17,7 @@ WORKDIR /app
 
 # 의존성 복사
 COPY --from=deps /app/node_modules ./node_modules
-# 소스 코드 복사
+# 소스 코드 복사 (public 폴더 포함)
 COPY . .
 
 # 환경 변수 설정 (빌드 시 필요한 경우)
@@ -34,9 +34,8 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# 필요한 파일들만 복사
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
+# public 폴더 복사 (이미지 파일들 포함) - 중요!
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # 빌드된 애플리케이션 복사 (소유권을 nextjs 사용자로 설정)
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./

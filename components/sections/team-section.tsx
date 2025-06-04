@@ -1,5 +1,3 @@
-// 파일 설명 주석 추가
-
 /**
  * 팀 소개 섹션 컴포넌트
  * 회사의 주요 팀 멤버들을 카드 형태로 표시합니다.
@@ -35,10 +33,12 @@ export function TeamSection() {
               {/* 팀 멤버 프로필 이미지 */}
               <div className="aspect-square relative">
                 <Image
-                  src={`/placeholder.svg?height=300&width=300&text=${member.name}`}
+                  src={`/images/team-member-${index + 1}.png`}
                   alt={member.name}
                   fill
                   className="object-cover"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
               </div>
               {/* 팀 멤버 정보 */}

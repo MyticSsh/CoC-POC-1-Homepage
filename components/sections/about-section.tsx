@@ -1,5 +1,3 @@
-// 파일 설명 주석 추가
-
 /**
  * 회사 소개 섹션 컴포넌트
  * 회사에 대한 정보, 미션, 비전, 핵심 가치를 표시합니다.
@@ -32,13 +30,17 @@ export function AboutSection() {
         {/* 메인 콘텐츠 영역 */}
         <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
           {/* 회사 이미지 */}
-          <Image
-            src="/placeholder.svg?height=400&width=600"
-            width={600}
-            height={400}
-            alt="Our Team"
-            className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-          />
+          <div className="flex items-center justify-center">
+            <Image
+              src="/images/about.png"
+              width={600}
+              height={400}
+              alt="Our Team at Work"
+              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+            />
+          </div>
 
           {/* 미션, 비전, 가치 리스트 */}
           <div className="flex flex-col justify-center space-y-4">

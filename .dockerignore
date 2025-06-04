@@ -54,3 +54,6 @@ CHANGELOG.md
 __tests__/
 **/*.test.js
 **/*.spec.js
+
+# public 폴더는 포함 (이미지 파일들 때문에)
+# public/
